@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyls</title>
+</head>
+<body>
+    <main class="container">
+  <h1>Vinyl Collection</h1>
+  <div class="toolbar">
+    <label>Genre:
+      <select id="filterGenre"><option value="">All</option><option>Kenyan</option><option>Pop</option><option>Rock</option></select>
+    </label>
+    <label>Sort:
+      <select id="sortBy"><option value="popular">Popular</option><option value="new">New releases</option></select>
+    </label>
+  </div>
+
+  <section id="vinylGrid" class="vinyl-grid" aria-live="polite">
+    <!-- JS will render vinyl cards; example card: -->
+    <article class="vinyl-card">
+      <img src="images/album1.jpg" alt="Album Title — Artist">
+      <div class="card-body">
+        <h3>Album Title</h3>
+        <p class="artist">Artist</p>
+        <p class="meta">1st Pressing • 180g</p>
+        <div class="price-row">
+          <span class="price">KSh 4,500</span>
+          <button class="btn small">Add to cart</button>
+        </div>
+        <div class="badges"><span class="badge">Trade-in</span><span class="badge sale">Sale</span></div>
+      </div>
+    </article>
+    <!-- more -->
+  </section>
+</main>
+
+</body>
+</html>
