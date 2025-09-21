@@ -1,3 +1,4 @@
+this is still incomplete work, with more features to be added
 
 254 Vinyls is a responsive web app that recommends vinyl records to users based on their Spotify listening habits. By connecting your Spotify account, the platform analyzes your favorite artists and genres to provide personalized vinyl suggestions.
 
