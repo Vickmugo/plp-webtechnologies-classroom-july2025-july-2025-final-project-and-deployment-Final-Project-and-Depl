@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | 254 Vinyls</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Enhanced About Page Styles */
+    .hero {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: #f8f9fa;
+    }
+
+    [data-theme="dark"] .hero {
+      background-color: #0f0f0f;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.7);
+      transition: all 0.3s ease;
+    }
+
+    [data-theme="dark"] .hero-image {
+      filter: brightness(0.5);
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-overlay h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: slideInUp 1s ease-out 0.5s forwards;
+    }
+
+    /* 254 Vinyls Brand Animation */
+    .brand-text {
+      display: inline-block;
+    }
+
+    .number-animation {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      color: #3b82f6;
+    }
+
+    .number-animation.animate {
+      animation: numberPop 0.8s ease-out forwards;
+    }
+
+    .vinyl-text {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInRight 1s ease-out 2s forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes numberPop {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+      }
+      50% {
+        transform: translateY(-10px) scale(1.2);
+        color: #f59e0b;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        color: #3b82f6;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Enhanced Content Sections */
+    .about-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .mission, .vision {
+      background-color: #ffffff;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    [data-theme="dark"] .mission,
+    [data-theme="dark"] .vision {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .mission:hover, .vision:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="dark"] .mission:hover,
+    [data-theme="dark"] .vision:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .mission.animate, .vision.animate {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mission h2, .vision h2 {
+      color: #3b82f6;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .mission h2::after, .vision h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+      border-radius: 2px;
+    }
+
+    .mission p, .vision p {
+      color: #6b7280;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    [data-theme="dark"] .mission p,
+    [data-theme="dark"] .vision p {
+      color: #9ca3af;
+    }
+
+    .mission strong, .vision strong {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+
+    .mission em, .vision em {
+      color: #f59e0b;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background-color: #f8f9fa;
+      padding: 4rem 0;
+      margin: 4rem 0;
+    }
+
+    [data-theme="dark"] .stats-section {
+      background-color: #0f0f0f;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    [data-theme="dark"] .stat-card {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    [data-theme="dark"] .stat-label {
+      color: #9ca3af;
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background-color: #f8f9fa;
+      border-top: 1px solid #e5e7eb;
+      padding: 3rem 0 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    [data-theme="dark"] footer {
+      background-color: #1a1a1a;
+      border-top: 1px solid #333;
+    }
+
+    footer p {
+      color: #6b7280;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    [data-theme="dark"] footer p {
+      color: #9ca3af;
+    }
+
+    /* Navigation Integration */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .hero {
+      margin-top: 80px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        height: 50vh;
+        margin-top: 70px;
+      }
+
+      .hero-overlay h1 {
+        font-size: 2.5rem;
+      }
+
+      .mission, .vision {
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .mission h2, .vision h2 {
+        font-size: 1.8rem;
+      }
+
+      .mission p, .vision p {
+        font-size: 1rem;
+      }
+
+      .stats-section {
+        padding: 3rem 0;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-overlay h1 {
+        font-size: 2rem;
+      }
+
+      .mission, .vision {
+        padding: 1.5rem;
+      }
+
+      .mission h2, .vision h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Loading animation */
+    .page-loader {
+      opacity: 0;
+      animation: pageLoad 0.8s ease-out forwards;
+    }
+
+    @keyframes pageLoad {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="page-loader">
+  <!-- Header Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="254 Vinyls home">
+        <img src="images/logo.png" alt="254 Vinyls logo">
+      </a>
+
+      <div class="greeting" aria-hidden="false">
+        <span id="greetingText">About 254 Vinyls — Your Premium Vinyl Destination</span>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle menu">
+        ☰
+      </button>
+
+      <nav id="mainNav" class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html" style="color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); border-radius: 8px;">About</a>
+        <a href="vinyl.html">Vinyl</a>
+        <a href="recorders.html">Recorders</a>
+        <a href="spotify-connect.html">Connect Spotify</a>
+        <a href="contact.html" class="cta">Trade In / Sell</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section with Cover Image -->
+  <section class="hero">
+    <img src="images/coverimage.png" alt="Vinyl Community" class="hero-image">
+    <div class="hero-overlay">
+      <h1 class="animate-text">
+        <span class="brand-text">
+          <span class="number-animation">2</span><span class="number-animation">5</span><span class="number-animation">4</span>
+          <span class="vinyl-text"> VINYLS</span>
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number" data-count="5000">0</span>
+        <div class="stat-label">Vinyl Records</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-count="150">0</span>
+        <div class="stat-label">Kenyan Artists</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-count="25">0</span>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-count="98">0</span>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <main class="about-container">
+    <section class="mission animate-text">
+      <h2>Our Mission</h2>
+      <p>
+        At <strong>254 Vinyls</strong>, our mission is to create a vibrant, global community of music 
+        enthusiasts. We believe music is a universal language that transcends borders and cultures, 
+        uniting people through shared melodies and rhythms.
+      </p>
+      <p>
+        Based in Kenya, we aim to connect African music lovers with the global vinyl scene, while 
+        also introducing international audiences to the richness and diversity of Kenyan and African 
+        music. Whether you're a collector, a casual listener, or someone discovering vinyl for the first 
+        time, we're here to bring love through music.
+      </p>
+    </section>
+
+    <section class="vision animate-text">
+      <h2>Our Vision</h2>
+      <p>
+        We envision a world where vinyl culture thrives as a bridge between generations and 
+        continents. From <em>new releases</em> to <em>timeless classics</em>, 254 Vinyls is committed to 
+        offering an unparalleled selection of titles, trade-in options, and weekly Black Friday-style 
+        sales. Our goal is to make every spin on your turntable a connection to the global heartbeat 
+        of music.
+      </p>
+      <p>
+        By embracing both Kenyan and international titles, we strive to empower local artists while 
+        celebrating the legends and innovators who have shaped the global soundscape.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 254 Vinyls. Bringing Kenya's finest sounds to your turntable.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Dark/Light mode functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', currentTheme);
+    themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      
+      themeToggle.style.transform = 'rotate(360deg) scale(1.2)';
+      setTimeout(() => {
+        themeToggle.style.transform = 'rotate(0deg) scale(1)';
+      }, 300);
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.contains('open');
+      mainNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', !isOpen);
+      menuToggle.innerHTML = !isOpen ? '✕' : '☰';
+    });
+
+    // 254 Vinyls brand animation on load
+    window.addEventListener('load', () => {
+      const numbers = document.querySelectorAll('.number-animation');
+      numbers.forEach((number, index) => {
+        setTimeout(() => {
+          number.classList.add('animate');
+        }, index * 300 + 1000);
+      });
+    });
+
+    // Animated counters for stats
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2500;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + (target === 98 ? '%' : '+');
+          }
+        };
+        
+        updateCounter();
+      });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('stats-grid')) {
+            animateCounters();
+          }
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.mission, .vision, .stats-grid').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header scroll effect
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.site-header');
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
+      lastScrollY = window.scrollY;
+    });
+
+    // Smooth page load
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+
+  <!-- Keep your existing cursor animation -->
+  <script src="js/mouse-animate.js"></script>
+</body>
+</html>
