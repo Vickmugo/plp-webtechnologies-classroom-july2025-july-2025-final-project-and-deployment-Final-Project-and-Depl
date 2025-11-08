@@ -1,42 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // mobile menu
-  const btn = document.getElementById('menuToggle');
-  const nav = document.getElementById('mainNav');
-  if(btn && nav){
-    btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    mainNav.addEventListener('click', (event) => {
+      if (event.target.tagName === 'A') {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
-  // optional: change greeting messages every few seconds (for variety)
   const greetings = [
     'Welcome to 254 Vinyls — Kenyan & global vinyl for every mood',
     'Weekly bargains — Check the Black Friday-style deals',
     'Trade-in your old records — Earn store credit',
     'New releases + classics — Curated for collectors'
   ];
-  const gEl = document.getElementById('greetingText');
-  if(gEl){
-    let i=0;
-    setInterval(()=> {
-      i = (i+1) % greetings.length;
-      // cross-fade by temporarily changing text then letting animation continue
-      gEl.textContent = greetings[i];
+
+  const greetingElement = document.getElementById('greetingText');
+  if (greetingElement) {
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % greetings.length;
+      greetingElement.textContent = greetings[index];
     }, 8000);
   }
-  const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-// Toggle nav on button click
-menuToggle.addEventListener('click', () => {
-  mainNav.classList.toggle('open');
 });
-// Close nav when a link is clicked (for single-page behavior)
-mainNav.addEventListener('click', (e) => {
-  if(e.target.tagName === 'A'){
-    mainNav.classList.remove('open');
-  }
-}
-);
-}); 
