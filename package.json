@@ -1,0 +1,19 @@
+{
+  "name": "254-vinyls",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "254 Vinyls — personalized vinyl recommendations powered by Spotify listening data.",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node server/index.js",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

@@ -1,40 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinyls</title>
+    <title>Vinyl Collection • 254 Vinyls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="container">
-  <h1>Vinyl Collection</h1>
-  <div class="toolbar">
-    <label>Genre:
-      <select id="filterGenre"><option value="">All</option><option>Kenyan</option><option>Pop</option><option>Rock</option></select>
-    </label>
-    <label>Sort:
-      <select id="sortBy"><option value="popular">Popular</option><option value="new">New releases</option></select>
-    </label>
-  </div>
-
-  <section id="vinylGrid" class="vinyl-grid" aria-live="polite">
-    <!-- JS will render vinyl cards; example card: -->
-    <article class="vinyl-card">
-      <img src="images/album1.jpg" alt="Album Title — Artist">
-      <div class="card-body">
-        <h3>Album Title</h3>
-        <p class="artist">Artist</p>
-        <p class="meta">1st Pressing • 180g</p>
-        <div class="price-row">
-          <span class="price">KSh 4,500</span>
-          <button class="btn small">Add to cart</button>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="logo" href="index.html" aria-label="254 Vinyls home">
+                <img src="images/logo.png" alt="254 Vinyls logo">
+            </a>
+            <div class="greeting" aria-hidden="false">
+                <span id="greetingText">Discover vinyl gems tailored for you</span>
+            </div>
+            <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle menu">
+                ☰
+            </button>
+            <nav id="mainNav" class="site-nav" role="navigation" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="vinyl.html" class="active">Vinyl</a>
+                <a href="recorders.html">Recorders</a>
+                <a href="spotify-connect.html">Connect Spotify</a>
+                <a href="about.html">About</a>
+            </nav>
         </div>
-        <div class="badges"><span class="badge">Trade-in</span><span class="badge sale">Sale</span></div>
-      </div>
-    </article>
-    <!-- more -->
-  </section>
-</main>
+    </header>
 
+    <main class="container" style="padding: 3rem 0;">
+        <header style="margin-bottom: 2rem;">
+            <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">Vinyl Collection</h1>
+            <p style="color: #6b7280; max-width: 540px;">
+                Browse curated pressings from Kenyan legends to global stars. Use Spotify Connect to personalize your recommendations.
+            </p>
+        </header>
+
+        <div class="toolbar" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <label>
+                Genre:
+                <select id="filterGenre">
+                    <option value="">All</option>
+                </select>
+            </label>
+            <label>
+                Sort:
+                <select id="sortBy">
+                    <option value="popular">Popular</option>
+                    <option value="new">New releases</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </label>
+        </div>
+
+        <section id="vinylGrid" class="vinyl-grid" aria-live="polite">
+            <p>Loading vinyl catalog…</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 254 Vinyls. Vinyl culture for every collector.</p>
+        </div>
+    </footer>
+
+    <script src="js/header.js" defer></script>
+    <script src="js/shop.js" defer></script>
 </body>
 </html>

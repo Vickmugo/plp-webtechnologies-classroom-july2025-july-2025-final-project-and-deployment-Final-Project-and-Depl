@@ -3,16 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connect Spotify • 254 Vinyls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="container">
-  <h1>Connect your Spotify</h1>
-  <p>We’ll use your top artists to recommend vinyls you’ll love. We never post on your behalf.</p>
-  <a id="connectSpotify" class="btn" href="/auth/spotify">Connect with Spotify</a>
-  <section id="recommended" aria-live="polite"></section>
-</main>
-<script src="js/index.js"></script>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="logo" href="index.html" aria-label="254 Vinyls home">
+                <img src="images/logo.png" alt="254 Vinyls logo">
+            </a>
+            <nav id="mainNav" class="site-nav" role="navigation" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="vinyl.html">Vinyl</a>
+                <a href="recorders.html">Recorders</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
 
+    <main class="container spotify-connect">
+        <section class="card intro-card">
+            <h1>Connect your Spotify</h1>
+            <p class="lead">
+                Authorize 254 Vinyls to read your top artists and tracks. We never post or modify your account.
+                Your listening trends stay private and are used only to build recommendations for you.
+            </p>
+            <div class="action-row">
+                <a id="connectSpotify" class="btn primary" href="/auth/spotify">Connect with Spotify</a>
+                <button id="logoutSpotify" class="btn secondary hidden" type="button">Disconnect</button>
+            </div>
+            <p id="statusMessage" class="status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section id="profileSection" class="card hidden" aria-live="polite">
+            <div class="section-header">
+                <h2>Your Spotify snapshot</h2>
+                <button id="refreshSpotify" class="btn ghost small" type="button">Refresh data</button>
+            </div>
+            <div id="profileDetails" class="profile"></div>
+        </section>
+
+        <section id="topArtistsSection" class="card hidden">
+            <h2>Top artists</h2>
+            <div id="topArtistsList" class="chip-list"></div>
+        </section>
+
+        <section id="topTracksSection" class="card hidden">
+            <h2>Top tracks</h2>
+            <div id="topTracksList" class="chip-list"></div>
+        </section>
+
+        <section id="recommendedSection" class="card hidden" aria-live="polite">
+            <h2>Vinyls picked for you</h2>
+            <p class="card-subtitle">Synced from your top artists and genres. Updated whenever you reconnect.</p>
+            <div id="recommendedGrid" class="vinyl-grid"></div>
+        </section>
+    </main>
+
+    <script src="js/header.js" defer></script>
+    <script src="js/index.js" type="module"></script>
 </body>
 </html>
